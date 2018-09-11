@@ -58,7 +58,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.update(group_params)
         update_leaders
-
         format.html { redirect_to groups_path }
         format.json { head :no_content }
       else
@@ -96,7 +95,8 @@ class GroupsController < ApplicationController
   def update_leaders
     updated_leader_ids = params[:group][:leader]
     return if updated_leader_ids.nil?
-
+    puts 'HELLO FROM THE OUTSIDE'
+    puts updated_leader_ids.map(&:to_i)
     LeaderUpdater.new(@group, updated_leader_ids.map(&:to_i)).update
   end
 

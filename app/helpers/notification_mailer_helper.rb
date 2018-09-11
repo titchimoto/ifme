@@ -85,7 +85,7 @@ module NotificationMailerHelper
   end
 
   def remove_group_leader_subject(data)
-    group(data, 'add_group_leader_subject')
+    user_group(data, 'remove_group_leader_subject')
   end
 
   def update_meeting_subject(data)
@@ -152,6 +152,10 @@ module NotificationMailerHelper
   end
 
   def user_group(data, key)
+    puts 'fjdklasjfdklsfjdsklfjdsklfj'
+    puts data
+    puts data['user']
+    puts data[:user]
     I18n.t(val(key), user: data['user'].to_s, group: data['group'].to_s)
   end
 

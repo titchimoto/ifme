@@ -42,6 +42,8 @@ class MedicationsController < ApplicationController
   # POST /medications
   # POST /medications.json
   def create
+    puts 'dsjfkladfjadklfjdkalsfjadsf'
+    puts medication_params
     @medication =
       Medication.new(medication_params.merge(user_id: current_user.id))
     return unless save_refill_to_google_calendar(@medication)
